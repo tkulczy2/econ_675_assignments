@@ -1,0 +1,90 @@
+\documentclass{article}
+
+%\usepackage[margin=0.5in]{geometry}
+\usepackage{geometry}
+\usepackage{amsmath,amsthm,amssymb,amsfonts,bbm,accents}
+\usepackage{parskip,verbatim,pdflscape,listings}
+\usepackage{float,graphicx}
+\usepackage{hyperref,color}
+
+
+\graphicspath{{./figures/}}
+
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\Cov}{\mathbb{C}ov}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\V}{\mathbb{V}}
+
+\newcommand{\indep}{\rotatebox[origin=c]{90}{$\models$}}
+
+\makeatletter
+\def\input@path{{./tables/}}
+\makeatother
+
+\title{ECON 675: Problem Set 3 \\
+\large Prof. Cattaneo}
+\date{\today}
+\author{Theodor Kulczycki}
+
+\setcounter{secnumdepth}{0}
+
+\begin{document}
+
+\maketitle
+%\tableofcontents
+
+\section*{Question 1}
+
+\subsection*{Part 1.1)}
+
+
+\section*{Question 2}
+
+\subsection*{Part 2.1)}
+
+conditional moment conditions
+\[ 0 = \E[m(y_i^*, t_i, x_i, \beta_0)|t_i, x_i] \]
+\[ \E[m(\cdot)] = 0 \text{, GMM} \]
+
+more generally,
+
+\[ \E[m(w_i; \theta)|Z_i] = 0 \]
+
+\[ \E[g(Z_i)m(w_i; \theta)] = \E[ \E[g(Z_i)m(w_i; \theta)|Z_i] ] = 0 \]
+
+\[ \theta = \arg\min \left( \frac{1}{n} \sum g(Z_i) m(w_i; \theta) \right)' W \left( \frac{1}{n} \sum g(Z_i) m(w_i; \theta) \right)  \]
+
+\[ 0 = \left( \frac{1}{n} \sum \frac{\partial}{\partial \theta'} g(Z_i) m(w_i; \hat{\theta}) \right)' W \left( \frac{1}{n} \sum g(Z_i) m(w_i; \hat{\theta}) \right)  \]
+
+\[ 0 = \left( \frac{1}{n} \sum \frac{\partial}{\partial \theta'} g(Z_i) m(w_i; \hat{\theta}) \right)' W \left( \frac{1}{n} \sum g(Z_i) m(w_i; \theta_0) \right) + \left( \frac{1}{n} \sum  g(Z_i) m(w_i; \hat{\theta}) \right)' W \left( \frac{1}{n} \sum \frac{\partial}{\partial \theta} g(Z_i) m(w_i; \tilde{\theta}) \right) (\hat{theta} - \theta_0) \]
+
+\[ \left( \frac{1}{n} \sum \frac{\partial}{\partial \theta} g(Z_i) m(w_i; \tilde{\theta}) \right) \to \Omega_0 \]
+
+\[ \sqrt{n} (\hat{theta} - \theta_0) = (\Omega_0' W_0 \Omega_0)^{-1} \Omega_0 W_0 \frac{1}{\sqrt{n}} \sum g(Z_i) m(w_i, \theta) + o_p(1) \]
+
+\[ V_0 = (\Omega_0' W_0 \Omega_0)^{-1} \Omega_0 W_0 \frac{1}{\sqrt{n}} \sum W_0 \Omega_0 (\Omega_0' W_0 \Omega_0)^{-1} \]
+
+
+\[ \Sigma_0 = \V[g(z_i) m(w_i, \theta)] \]
+
+\[ W_0^* = \Sigma_0^{-1} \Rightarrow V_0^* = (\Omega_0' \Sigma_0 ^{-1} \Omega_0)^{-1} \]
+
+
+\[ \Omega_0' \Sigma_0 ^{-1} \Omega_0 \approx \E[ g(z_i) \frac{\partial m_i}{\partial \theta}] \left( \E[ g(z_i) \V[m_i|z_i] g(z_i) ] \right)^{-1} \E[ g(z_i) \frac{\partial m_i}{\partial \theta}] \]
+
+\[ g^*(z_i) =  \frac{\partial m_i}{\partial \theta'} \V[m(w_i; \theta_0)|Z_i]^{-1} \]
+
+\[ \Omega_0' \Sigma_0 ^{-1} \Omega_0 = \frac{\partial m_i}{\partial \theta'}] \V[m_i|z_i]^{-1} \frac{\partial m_i}{\partial \theta} \]
+
+
+
+
+\section*{Appendix: Code}
+
+%\subsection*{R Code}
+
+%\lstinputlisting[]{code/ECON_675_ps2.R}
+
+
+
+\end{document}
